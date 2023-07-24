@@ -4,23 +4,23 @@ require('dotenv').config();
 const cors = require('cors');
 
 
-
-
 const port=process.env.PORT;
 
-
+//creal el servidor de express
 const app = express();
 
+//configuracion del CORS
 app.use(cors());
 
+//lectura y parceo del body
+app.use(express.json());
+
+//Funcion que hace la coneccion con la base de datos
 dbConection();
 
-app.get('/',(req,res)=>{
-    res.json({
-        ok:true,
-        msg:'todo ok'
-    })
-})
+//rutas
+app.use('/api/usuarios',require('./routes/usuario.routes'));
+app.use('/api/login',require('./routes/auth.routes'));
 
 app.listen(port,()=>{
     console.log(`servidor corriendo en puerto: ${port}`)
