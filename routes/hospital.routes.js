@@ -13,8 +13,12 @@ router.post('/',[
     check('nombre','El nombre del hospital es nesesario').not().isEmpty(),
     validarCampos
 ],postHospital);
-router.put('/:id',putHospital);
-router.delete('/:id',deletetHospital);
+router.put('/:id',[
+    validarJWT,
+    check('nombre','El nombre es obligatorio'),
+    validarCampos
+],putHospital);
+router.delete('/:id',validarJWT,deletetHospital);
 
 
 
