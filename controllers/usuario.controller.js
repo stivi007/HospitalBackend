@@ -85,7 +85,14 @@ const putUsuario = async(req=request,res=response)=>{
                 });
             }
         }
-        campos.email=email;
+        if(!usuarioDb.google){
+            campos.email=email;
+        }else if(usuarioDb.email !== email){
+            res.status(400).json({
+                ok:false,
+                msg:'Usuarios que iniciaron secion con google no pueden cambiar su correo'
+            });
+        }
 
         const usuarioActualizado = await Usuario.findByIdAndUpdate(uid,campos,{new:true});
 

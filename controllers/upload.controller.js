@@ -52,7 +52,8 @@ const fileUpload = (req=request,res=response)=>{
 
         res.json({
             ok:true,
-            msg:'Archivo upload'
+            msg:'Archivo upload',
+            nombreAarchivo
         });
     });
 }
