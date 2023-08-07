@@ -7,7 +7,7 @@ const { getHospitales, postHospital, putHospital, deletetHospital } = require('.
 
 const router = Router();
 
-router.get('/',getHospitales);
+router.get('/',validarJWT,getHospitales);
 router.post('/',[
     validarJWT,
     check('nombre','El nombre del hospital es nesesario').not().isEmpty(),

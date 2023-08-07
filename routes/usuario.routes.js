@@ -23,7 +23,7 @@ const { validarJWT } = require('../middlewares/validarJWT');
         validarJWT,
         check('nombre','El nombre es obligatorio').not().isEmpty(),
         check('email','El e-mail es obligatorio').not().isEmpty().isEmail(),
-        check('role','El role es obligatorio').not().isEmpty(),
+        // check('role','El role es obligatorio').not().isEmpty(),
         validarCampos
     ],putUsuario);
 
